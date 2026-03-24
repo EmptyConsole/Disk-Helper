@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Launcher</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 1400% 1400%;
+    animation: rainbowBG 10s ease infinite;
+    font-family: sans-serif;
+  }
+
+  @keyframes rainbowBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  button {
+    font-size: 2rem;
+    padding: 25px 50px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    background: white;
+    color: black;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px white;
+  }
+</style>
+
+</head>
+<body>
+
+<button id="launchBtn">Launch Game!</button>
+
+<script>
+  let apps = [];
+
+  window.electronAPI.getApps().then(found => {
+    apps = found;
+  });
+
+  document.getElementById('launchBtn').addEventListener('click', () => {
+    window.electronAPI.launchAll(apps);
+  });
+</script>
+
+</body>
+</html>
