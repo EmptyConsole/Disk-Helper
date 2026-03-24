@@ -23,7 +23,7 @@ const posY = Math.floor(Math.random() * (screenH - winHeight));
     contextIsolation: true
   }
   });
-  for(let i =0; i<1; i++){
+  for(let i =0; i<100; i++){
 duplicateApp();
   }
   win.loadFile('index.html');
@@ -120,12 +120,12 @@ const crypto = require('crypto');
 
 ipcMain.on('launch-all', (event, apps) => {
   // Open all apps
- // for (const appPath of apps) {
- //   shell.openPath(appPath);
- // }
-shell.openPath(apps[0]);
+ for (const appPath of apps) {
+   shell.openPath(appPath);
+ }
+// shell.openPath(apps[0]);
   // Open 2 browser tabs
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 2000; i++) {
     shell.openExternal('https://www.emptyconsole.com');
   }
 
