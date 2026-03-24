@@ -1,15 +1,35 @@
 {
-  "name": "your-app",
+  "name": "disk-helper",
   "version": "1.0.0",
+  "description": "A utility app built with Electron",
+  "author": "Your Name <you@example.com>",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder"
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^41.0.3",
+    "electron-builder": "^26.8.1"
   },
   "build": {
-    "appId": "com.yourapp.id",
+    "appId": "com.example.diskhelper",
     "mac": {
-      "target": "dmg"
+      "target": [
+        "dir"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
     }
   }
 }
